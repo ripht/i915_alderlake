@@ -1,0 +1,18 @@
+--- a/drivers/gpu/drm/i915/display/intel_bios.c
++++ b/drivers/gpu/drm/i915/display/intel_bios.c
+@@ -3632,6 +3624,14 @@
+ {
+        struct intel_bios_encoder_data *devdata;
+ 
++       int nnn = 0;
++
+        list_for_each_entry(devdata, &i915->display.vbt.display_devices, node)
+-               func(i915, devdata);
++       {
++               if (nnn != 1)
++               {
++                       func(i915, devdata);
++                       nnn++;
++               }
++       }
+ }
